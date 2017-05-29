@@ -511,30 +511,29 @@ public:
 		ssCmd >> maxitr; //output KPP
 
 		std::cout << "record_file: "
-			<< "\nnoupdate: " << noupdate
-			<< "\nsfensFilename: " << sfensFilename
-			<< "\nscoresFilename: " << scoresFilename
-			<< "\nsfensFilename: " << sfensFilename_check
-			<< "\nscoresFilename: " << scoresFilename_check
-			<< "\nmaxid: " << maxid
-			<< "\nblunderrate: " << blunderrate
-			<< "\nndepth2: " << ndepth2
-			<< "\nndepth3: " << ndepth3
-			<< "\nmoveEdge: " << Gradientmaker::moveEdge
-			<< "\nmoveSlope: " << Gradientmaker::moveSlope
-			<< "\ncutMinor: " << Gradientmaker::cutMinor
-			<< "\nstepMax: "<<Gradientmaker::stepMax
-			<< "\nminimumPlys: " << minimumPlys
-			<< "\nslidePlys: " << slidePlys
-			<< "\ncutDaburi: "<<cutDaburi
-			<< "\nmateFilter: " << mateFilter
-			<< "\nbonacounts: " << bonacounts
-			<< "\nentropy: " << entropy
-			<< "\nadamparams(alpha,beta,gamma,epsilon): " << adamalpha<<","<<adambeta<<","<<adamgamma<<","<<adamepsilon
-			<< "\nupdateitr: "<<updateitr
-			<< "\nmaxitr: "<<maxitr
-			<< std::endl;
-
+				  << "\nnoupdate: " << noupdate
+				  << "\nsfensFilename: " << sfensFilename
+				  << "\nscoresFilename: " << scoresFilename
+				  << "\nsfensFilename: " << sfensFilename_check
+				  << "\nscoresFilename: " << scoresFilename_check
+				  << "\nmaxid: " << maxid
+				  << "\nblunderrate: " << blunderrate
+				  << "\nndepth2: " << ndepth2
+				  << "\nndepth3: " << ndepth3
+				  << "\nmoveEdge: " << Gradientmaker::moveEdge
+				  << "\nmoveSlope: " << Gradientmaker::moveSlope
+				  << "\ncutMinor: " << Gradientmaker::cutMinor
+				  << "\nstepMax: "<<Gradientmaker::stepMax
+				  << "\nminimumPlys: " << minimumPlys
+				  << "\nslidePlys: " << slidePlys
+				  << "\ncutDaburi: "<<cutDaburi
+				  << "\nmateFilter: " << mateFilter
+				  << "\nbonacounts: " << bonacounts
+				  << "\nentropy: " << entropy
+				  << "\nadamparams(alpha,beta,gamma,epsilon): " << adamalpha<<","<<adambeta<<","<<adamgamma<<","<<adamepsilon
+				  << "\nupdateitr: "<<updateitr
+				  << "\nmaxitr: "<<maxitr
+				  << std::endl;
 		maxid = std::max<size_t>(0, maxid);
 		//parse2Data_.resize(maxid);
 		std::vector<Searcher> searchers(maxid);
