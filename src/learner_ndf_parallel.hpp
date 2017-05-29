@@ -13,7 +13,6 @@
 #define PRINT_PV(x)
 #endif
 
-
 //see http://qiita.com/skitaoka/items/e6afbe238cd69c899b2a for example
 struct AdadeltaParams{
 	float r;
@@ -71,7 +70,6 @@ struct RawEvaluater {
 	std::array<float, 2> kpp_raw[SquareNum][fe_end][fe_end];
 	std::array<float, 2> kkp_raw[SquareNum][SquareNum][fe_end];
 	std::array<float, 2> kk_raw[SquareNum][SquareNum];
-
 
 	void incParam(const Position& pos, const std::array<double, 2>& dinc) {
 		const Square sq_bk = pos.kingSquare(Black);
@@ -1020,7 +1018,6 @@ private:
 	double adambeta;
 	double adamgamma;
 	double adamepsilon;
-
 
 	bool cutDaburi;
 	int updateitr;
