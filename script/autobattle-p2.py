@@ -201,7 +201,7 @@ def vs_match(engines_full, options, threads, loop, numa, book_sfens, fileLogging
 	term_procs = [False] * threads * 2
 
 	for i in range(threads * 2):
-		#		proc = subprocess.Popen(cmds[i & 1] , shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE , stdin = subprocess.PIPE , universal_newlines=True , bufsize=1)
+#		proc = subprocess.Popen(cmds[i & 1] , shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE , stdin = subprocess.PIPE , universal_newlines=True , bufsize=1)
 		# python3でnon-blocking
 		proc = subprocess.Popen(engines_full[i & 1], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
 		# やり方がわからないのでnon-blockingは保留
@@ -313,7 +313,7 @@ def vs_match(engines_full, options, threads, loop, numa, book_sfens, fileLogging
 		receive_something = False
 		while True:
 
-			#		for i in range(len(states)):
+#		for i in range(len(states)):
 
 			proc = procs[i]
 
@@ -412,7 +412,7 @@ def vs_match(engines_full, options, threads, loop, numa, book_sfens, fileLogging
 								if vs[j + 1] == "cp":
 									eval_value_from_thread[i] = str(v)
 								elif vs[j + 1] == "mate":
-									# mate表記なら32000を0手詰めのスコアとして計算しなおして返す。
+								# mate表記なら32000を0手詰めのスコアとして計算しなおして返す。
 									if v >= 0:
 										eval_value_from_thread[i] = str(32000 - v)
 									else:
@@ -506,9 +506,9 @@ def vs_match(engines_full, options, threads, loop, numa, book_sfens, fileLogging
 					"""
 					# トータルのnodes数の出力
 					for j in range(threads*2):
-							mes = "["+str(j)+"]:nodes = " + str(nodes[j])
-							outlog(j,mes)
-							outstd(j,mes)
+						mes = "["+str(j)+"]:nodes = " + str(nodes[j])
+						outlog(j,mes)
+						outstd(j,mes)
 					"""
 
 					for p in procs:
@@ -549,7 +549,7 @@ def vs_match(engines_full, options, threads, loop, numa, book_sfens, fileLogging
 		# process is not done, wait a bit and check again.
 
 		if not receive_something:
-			#			time.sleep(1.0/1000)
+#			time.sleep(1.0/1000)
 			time.sleep(0)  # 多分使わない
 
 
@@ -588,10 +588,10 @@ def engine_to_full(e):
 # sample
 #   > c:\python27\python.exe \\WS2012_860C_YAN\yanehome\script\engine_invoker2.py home:\\WS2012_860C_YAN\yanehome\ engine1:YaneuraOuV350.exe eval1:Apery20160505 engine2:YaneuraOuV350.exe eval2:Apery20160505 cores:8 loop:1000 numa:0 engine_threads:1 hash1:16 hash2:16 time:r100
 
-# HOMEPATH		  : ホームディレクトリ
+# HOMEPATH          : ホームディレクトリ
 # engine1,engine2   : エンジン1,2のpath
 # evaldir1,evaldir2 : 評価関数フォルダ1,2 (ホームディレクトリ配下のevalフォルダ内にあるものとする)
-# cores    	     : コアの数(これをengine_threadsで割った数だけ並列対局)
+# cores             : コアの数(これをengine_threadsで割った数だけ並列対局)
 # loop              : 対局回数
 # numa              : 実行するプロセッサグループ(256を指定すると0の意味になり、かつファイルロギングをする)
 # engine_threads    : 思考エンジンのスレッド数
@@ -681,27 +681,27 @@ engines_full = (engine1_path, engine2_path)
 evals = (eval1_path, eval2_path)
 
 for i in range(2):
-	print "engine" + str(i + 1) + " = " + engines_full[i] + " , eval = " + evals[i]
+    print "engine" + str(i + 1) + " = " + engines_full[i] + " , eval = " + evals[i]
 
 for play_time in play_time_list:
-	print "\nthreads = " + str(threads) + " , loop = " + str(loop) + " , numa = " + str(numa) + " , play_time = " + play_time
+    print "\nthreads = " + str(threads) + " , loop = " + str(loop) + " , numa = " + str(numa) + " , play_time = " + play_time
 
-	options = create_option(engines_full, engine_threads, evals, play_time, hashes, numa, PARAMETERS_LOG_FILE_PATH)
-
-	for i in range(2):
-		print "option " + str(i + 1) + " = " + ' / '.join(options[i])
-		print "time_setting = (total_time,inc_time,byoyomi,rtime) = " + str(options[i + 2])
-
-	sys.stdout.flush()
-
-	# 短くスレッド数と秒読み条件を文字列化
-	opt2 = "T" + str(engine_threads) + "," + play_time
-	book_sfens = "",
-	vs_match(engines_full, options, threads, loop, numa, book_sfens, fileLogging, opt2, book_moves)
-
-	# output final result
-	print "\nfinal result : "
-	for i in range(2):
-		print "engine" + str(i + 1) + " = " + engines_full[i] + " , eval = " + evals[i]
-#		print "play_time = " + play_time + " , " ,
-		output_rating(win, draw, lose, opt2)
+    options = create_option(engines_full, engine_threads, evals, play_time, hashes, numa, PARAMETERS_LOG_FILE_PATH)
+    
+    for i in range(2):
+        print "option " + str(i + 1) + " = " + ' / '.join(options[i])
+        print "time_setting = (total_time,inc_time,byoyomi,rtime) = " + str(options[i + 2])
+    
+    sys.stdout.flush()
+    
+    # 短くスレッド数と秒読み条件を文字列化
+    opt2 = "T" + str(engine_threads) + "," + play_time
+    book_sfens = "",
+    vs_match(engines_full, options, threads, loop, numa, book_sfens, fileLogging, opt2, book_moves)
+    
+    # output final result
+    print "\nfinal result : "
+    for i in range(2):
+        print "engine" + str(i + 1) + " = " + engines_full[i] + " , eval = " + evals[i]
+#       print "play_time = " + play_time + " , " ,
+        output_rating(win, draw, lose, opt2)
