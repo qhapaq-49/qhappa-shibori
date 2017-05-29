@@ -22,7 +22,6 @@ struct AdadeltaParams{
 };
 
 struct AdadeltaEvaluater{
-
 	static float  adamgamma;
 	static float  adamepsilon;
 
@@ -65,8 +64,6 @@ struct Gradientmaker{
 };
 
 struct RawEvaluater {
-
-
 	int kpp_rawcnt[SquareNum][fe_end][fe_end];
 	int kkp_rawcnt[SquareNum][SquareNum][fe_end];
 	int kk_rawcnt[SquareNum][SquareNum];
@@ -242,7 +239,6 @@ struct RawEvaluater {
 			for (int ksq = 0; ksq < SquareNum; ++ksq) {
 				for (int ksq1 = 0; ksq1 < SquareNum; ++ksq1) {
 					for (int i = 0; i < fe_end; ++i) {
-
 						kkp_raw[ksq][ksq1][i][0]+=addparam.kkp_raw[ksq][ksq1][i][0];
 						kkp_raw[ksq][ksq1][i][1]+=addparam.kkp_raw[ksq][ksq1][i][1];
 						kkp_rawcnt[ksq][ksq1][i]+=addparam.kkp_rawcnt[ksq][ksq1][i];
@@ -291,7 +287,6 @@ struct RawEvaluater {
 		std::cout<<"combine done"<<std::endl;
 	}
 	void mirrorParams2() {
-
 #if defined _OPENMP
 #pragma omp parallel
 #endif
@@ -394,7 +389,6 @@ struct RawEvaluater {
 	}
 
 	void updateParamswithoutLowerDimension() {
-
 		std::cout<<"update params..."<<std::endl;
 #if defined _OPENMP
 #pragma omp parallel
@@ -481,7 +475,6 @@ struct learnstat{
 
 class Learner {
 public:
-
 	void learn(Position& pos, std::istringstream& ssCmd) {
 		//    eval_.readSynthesized(pos.searcher()->options["Eval_Dir"],"_synthesized_zero.bin");
 
@@ -640,9 +633,7 @@ public:
 
 		}
 	}
-
 private:
-
 	void readBook(Position& pos, std::string sfenfile, std::string scorefile, learnstat &lstat, bool check) {
 		std::ifstream ifssfen(sfenfile.c_str(), std::ios::binary);
 		std::ifstream ifsscore(scorefile.c_str(), std::ios::binary);
@@ -777,7 +768,6 @@ private:
 			int prevscore = 0;
 			//      std::cout<<std::endl;
 			for (auto& bmd : gameMoves) {
-
 				if (bmd.useLearning) {
 					postoincparam(pos, bmd, diffsum,bonawindow, parse2Data, false, check || noupdate);
 
@@ -946,7 +936,6 @@ private:
 
 	//make position and score to gradient of params
 	void postoincparam(Position& pos, BookMoveData &bmd, double &diffsum, int bonawindow,Parse2Data& parse2Data, bool isbona ,bool noinc) {
-
 		SearchStack ss[2];
 		ss[0].staticEvalRaw.p[0][0] = ss[1].staticEvalRaw.p[0][0] = ScoreNotEvaluated;
 		Color rootColor = pos.turn();
@@ -969,7 +958,6 @@ private:
 		if(!isbona) {
 			bonakifuscore=score;
 		}else{
-
 			if(score > bonabestscore) {
 				bonabestscore=score;
 			}
