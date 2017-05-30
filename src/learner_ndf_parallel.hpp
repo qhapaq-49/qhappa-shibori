@@ -14,13 +14,13 @@
 #endif
 
 //see http://qiita.com/skitaoka/items/e6afbe238cd69c899b2a for example
-struct AdadeltaParams{
+struct AdadeltaParams　{
 	float r;
 	float s;
 	float v;
 };
 
-struct AdadeltaEvaluater{
+struct AdadeltaEvaluater　{
 	static float  adamgamma;
 	static float  adamepsilon;
 
